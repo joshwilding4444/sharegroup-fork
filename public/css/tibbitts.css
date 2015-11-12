@@ -1,0 +1,78 @@
+/*Christopher Tibbitts*/
+
+body {
+background-color: #63AFD0;
+}
+
+#test {
+    height:100px;
+    width:100px;
+    display: inline-block;
+    background-color: black;
+}
+
+.content {
+  text-align: left;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 10%;
+}
+
+.imagecontent {
+  text-align: left;
+  margin-left: 8%;
+  margin-right: 8%;
+}
+
+.border {
+  width: 306px;
+  height: 346px;
+  border: solid 1px black;
+  float: left;
+  padding: 5px;
+  text-align: center;
+}
+
+.buttonleft {
+  position: absolute;
+  margin-top: 270px;
+  margin-left: 30px;
+  height: 30px;
+  width: 70px;
+  z-index: 1;
+}
+
+.buttonright {
+  position: absolute;
+  margin-top: 270px;
+  margin-left: 210px;
+  height: 30px;
+  width: 70px;
+  z-index: 1;
+}
+
+.photosize {
+  width: 95%;
+  display:inline-block;
+  position:relative;
+  z-index: 0;
+}
+
+.testfeed {
+  float: left;
+  margin: 5px;
+  height: 310px;
+  width: 310px;
+  padding: 15px;
+  background-color: grey;
+  border: black solid 2px;
+  border-radius: 20px 20px 20px 20px;
+}
+
+.photo {
+  width: 310px;
+  height: 310px;
+  position: absolute;
+  z-index: 2;
+  border-radius: 10px 10px 10px 10px;
+}
