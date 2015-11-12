@@ -7,6 +7,7 @@ indexRoutes	= require('./routes/index.js')
 userRoutes	= require('./routes/user.js')
 session = require('express-session')
 querystring = require('querystring')
+profileRoutes = require('./routes/profile.js')
 
 cfg = require('./config.js')
 
@@ -26,5 +27,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRoutes)
 app.use('/user', userRoutes)
+app.use('/profile', profileRoutes)
 
 app.listen(3000)
