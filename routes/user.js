@@ -55,8 +55,10 @@ router.get('/dashboard', function(req, res){
     }
 
     else{
+
+      console.log(searchinput);
       var options = {
-        url: 'https://api.instagram.com/v1/tags/' + 'puppy' + '/media/recent?access_token=' + cfg.access_token
+        url: 'https://api.instagram.com/v1/tags/' + searchinput + '/media/recent?access_token=' + cfg.access_token
       }
       var userInfo = {
         url : 'https://api.instagram.com/v1/users/self/?access_token=' + cfg.access_token
@@ -64,17 +66,21 @@ router.get('/dashboard', function(req, res){
 
       request.get(options, function(error, response, body){
         var feed = JSON.parse(body)
+        request.get(userInfo, function(error, response, body){
+          var user = JSON.parse(body)
         // var profile = {
         //   url: 'https://api.instagram.com/v1/users/' + feed. + '/?access_token=ACCESS-TOKEN' + cfg.access_token
         // }
         //console.log(body)
         res.render('search', {
            feed: feed.data,
+           user: user.data,
            layout: 'auth_base',
            title: 'Search Page!',
            pageintro: 'This is the search page!'
          })
       })
+    })
     }
   })
 

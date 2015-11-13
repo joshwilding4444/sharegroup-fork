@@ -1,7 +1,8 @@
 $(document).ready(function() {
   // $('.buttonleft').hide('fast')
   // $('.buttonright').hide('fast')
-  //
+
+
 
   $('.testfeed').mouseenter(function() {
     //$('.buttonleft').fadeIn(1000);
@@ -23,5 +24,10 @@ $(document).ready(function() {
   //   $('.comment').animate({marginTop: '+=99px'});
   //   $('.testfeed').animate({height: '+=46px'});
   // });
+
+  $('.searchbutton').click(function() {
+    searchinput = $('.searchinputtextbox').val();
+    window.location.replace('/user/search');
+  });
 
 });
