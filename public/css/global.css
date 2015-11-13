@@ -86,14 +86,15 @@ a.jw-navbar {
   margin-right:20%;
   margin-bottom: 0;
   padding:0;
-  height:4%;
-  width: 50%;
-  font-style:italic;
+  height: 25px;
+  width: 45%;
   font-family: sans-serif;
   font-size: 18px;
   border-radius: 4px 4px 4px 4px;
-  color: #A3A3A3;
+  color: black;
+  font-style: normal;
 }
+
 img.jw-search {
   position:fixed;
   float:right;

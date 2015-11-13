@@ -49,4 +49,33 @@ router.get('/dashboard', function(req, res){
     }
   })
 
+  router.get('/search', function(req, res){
+    if (cfg.access_token === ''){
+      res.redirect('/')
+    }
+
+    else{
+      var options = {
+        url: 'https://api.instagram.com/v1/tags/' + 'puppy' + '/media/recent?access_token=' + cfg.access_token
+      }
+      var userInfo = {
+        url : 'https://api.instagram.com/v1/users/self/?access_token=' + cfg.access_token
+      }
+
+      request.get(options, function(error, response, body){
+        var feed = JSON.parse(body)
+        // var profile = {
+        //   url: 'https://api.instagram.com/v1/users/' + feed. + '/?access_token=ACCESS-TOKEN' + cfg.access_token
+        // }
+        //console.log(body)
+        res.render('search', {
+           feed: feed.data,
+           layout: 'auth_base',
+           title: 'Search Page!',
+           pageintro: 'This is the search page!'
+         })
+      })
+    }
+  })
+
 module.exports = router
