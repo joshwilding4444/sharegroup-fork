@@ -107,8 +107,15 @@ img.jw-search {
 }
 
 .jw-search-button {
-  display:inline;
+  display:block;
   margin-left:620px;
+  background-image: url("/images/search-button-background.png");
+  background-repeat: no-repeat;
+  background-color:transparent;
+  border:0;
+  font-size: 0;
+  height:25px;
+  width:25px;
 }
 /*
   !SAVED SEARCH CONTAINER
@@ -177,7 +184,9 @@ body {
 */
 li.profileOne{
 	position:relative;
+  list-style-type: none;
 	margin-left: 95%;
+  margin-top: 1%;
 }
 .prof{
 	width: 30px;

@@ -62,8 +62,8 @@ router.get('/dashboard', function(req, res){
       var searchURL = 'https://api.instagram.com/v1/tags/' + searchInput + '/media/recent?access_token=' + cfg.access_token
       //console.log(searchURL)    //log the complete GET request URL to the console
       var searchOptions = {     //create an options object to be sent to the request.get() function
-        url: searchURL
-      }
+        url: searchURL          //Defining the URL here, instead of within the 'searchURL' variable,
+      }                         //results in the search placing 'undefined' into the searchInput variable
       //console.log(options)
       var userInfo = {
         url : 'https://api.instagram.com/v1/users/self/?access_token=' + cfg.access_token
