@@ -20,14 +20,4 @@ $(document).ready(function() {
     $('.testfeed').animate({height: '-=46px'});
   });
 
-  // $('.buttonright').click(function() {
-  //   $('.comment').animate({marginTop: '+=99px'});
-  //   $('.testfeed').animate({height: '+=46px'});
-  // });
-
-  $('.searchbutton').click(function() {
-    searchinput = $('.searchinputtextbox').val();
-    window.location.replace('/user/search');
-  });
-
 });

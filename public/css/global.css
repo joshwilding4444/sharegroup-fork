@@ -105,6 +105,11 @@ img.jw-search {
   width: 30px;
   height: 30px;
 }
+
+.jw-search-button {
+  display:inline;
+  margin-left:620px;
+}
 /*
   !SAVED SEARCH CONTAINER
 */

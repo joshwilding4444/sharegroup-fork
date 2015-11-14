@@ -10,12 +10,12 @@ querystring = require('querystring')
 
 cfg = require('./config.js')
 
-searchinput = ''
 
 var app = express();
 
 app.engine('handlebars', exphbs({defaultLayout: 'base'}));
 app.set('view engine', 'handlebars');
+app.use(bodyParser());
 
 app.use(session({
   cookieName: 'session',

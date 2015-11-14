@@ -56,28 +56,33 @@ router.get('/dashboard', function(req, res){
 
     else{
 
-      console.log(searchinput);
-      var options = {
-        url: 'https://api.instagram.com/v1/tags/' + searchinput + '/media/recent?access_token=' + cfg.access_token
+      var searchInput = req.query.search    //construct part of the query string, using the user input
+      //console.log(req.query)            //log the query string to the console
+      //Put the entire search URL together.
+      var searchURL = 'https://api.instagram.com/v1/tags/' + searchInput + '/media/recent?access_token=' + cfg.access_token
+      //console.log(searchURL)    //log the complete GET request URL to the console
+      var searchOptions = {     //create an options object to be sent to the request.get() function
+        url: searchURL
       }
+      //console.log(options)
       var userInfo = {
         url : 'https://api.instagram.com/v1/users/self/?access_token=' + cfg.access_token
       }
 
-      request.get(options, function(error, response, body){
-        var feed = JSON.parse(body)
+      request.get(searchOptions, function(error, response, body){
+        try {
+          var searchFeed = JSON.parse(body)     //This object contains the Intagram search results
+        } catch(err) {
+          console.log(searchOptions)
+        }
         request.get(userInfo, function(error, response, body){
           var user = JSON.parse(body)
-        // var profile = {
-        //   url: 'https://api.instagram.com/v1/users/' + feed. + '/?access_token=ACCESS-TOKEN' + cfg.access_token
-        // }
-        //console.log(body)
         res.render('search', {
-           feed: feed.data,
+           feed: searchFeed.data,
            user: user.data,
            layout: 'auth_base',
            title: 'Search Page!',
-           pageintro: 'This is the search page!'
+           pageintro: 'Search Instagram for #' + searchInput  //Shows the user the current search query
          })
       })
     })
