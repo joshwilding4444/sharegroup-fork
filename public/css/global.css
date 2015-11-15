@@ -108,6 +108,7 @@ img.jw-search {
 
 .jw-search-button {
   display:block;
+  filter:none;
   margin-left:620px;
   background-image: url("/images/search-button-background.png");
   background-repeat: no-repeat;
