@@ -42,7 +42,24 @@ background-color: #63AFD0;
   z-index: 1;
   border-radius: 13px 13px 13px 13px;
 }
-
+.likes{
+  position: absolute;
+  margin-top: 274px;
+  margin-left: 105px;
+  height: 30px;
+  width: 70px;
+  z-index: 1;
+  border-radius: 13px 13px 13px 13px;
+}
+.comments{
+  position: absolute;
+  margin-top: 274px;
+  margin-left: 190px;
+  height: 30px;
+  width: 70px;
+  z-index: 1;
+  border-radius: 13px 13px 13px 13px;
+}
 .buttonright {
   position: absolute;
   margin-top: 270px;
