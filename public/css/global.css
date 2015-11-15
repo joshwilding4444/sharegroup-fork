@@ -108,8 +108,7 @@ img.jw-search {
 
 .jw-search-button {
   display:block;
-  filter:none;
-  margin-left:620px;
+  margin-left:655px;
   background-image: url("/images/search-button-background.png");
   background-repeat: no-repeat;
   background-color:transparent;
@@ -171,8 +170,8 @@ body {
 */
 .jw-profile-large {
   float: left;
-  margin-top: 160px;
-  margin-left: 510px;
+  margin-top: 15%;
+  margin-left: 35%;
   height: 310px;
   width: 310px;
   padding: 15px;
@@ -193,6 +192,7 @@ li.profileOne{
 	width: 30px;
 	heigth: 30px;
 }
+
 .home-body {
   text-align:center;
   margin-left:25%;
