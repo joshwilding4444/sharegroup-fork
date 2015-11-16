@@ -6,13 +6,17 @@ router.get('/dashboard', function(req, res){
   }
 
   else{
+    if(Date.parse(req.session.cookie.expires) < Date.now()){
+      access_token = ''
+      res.redirect('/')
+    } else {
+
     var options = {
       url: 'https://api.instagram.com/v1/users/self/feed?access_token=' + cfg.access_token
     }
     var userInfo = {
       url : 'https://api.instagram.com/v1/users/self/?access_token=' + cfg.access_token
     }
-
     request.get(options, function(error, response, body){
       var feed = JSON.parse(body)
       request.get(userInfo, function(error, response, body){
@@ -34,12 +38,17 @@ router.get('/dashboard', function(req, res){
       //console.log(body)
 
     }
-  })
+  }
+})
 
   router.get('/profile', function(req, res){
     if (cfg.access_token === ''){
       res.redirect('/')
+    } else if(Date.parse(req.session.cookie.expires) < Date.now()){
+      access_token = ''
+      res.redirect('/')
     } else {
+
       var options = {
         url : 'https://api.instagram.com/v1/users/self/?access_token=' + cfg.access_token
       }
