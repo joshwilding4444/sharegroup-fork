@@ -1,6 +1,6 @@
 body {
   background-color: #63AFD0;
-//  text-align: center;
+  text-align: center;
 }
 .WelcomePage{
   text-align:center;
@@ -8,7 +8,7 @@ body {
   top: 30%;
   left: 40%;
   margin-top: -30px;
-  margin-left: -75px;
+  margin-left: -175px;
   height: 100px;
   width: 600px;
 }
