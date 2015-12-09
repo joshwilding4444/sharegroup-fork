@@ -7,7 +7,7 @@ indexRoutes	= require('./routes/index.js')
 userRoutes	= require('./routes/user.js')
 session = require('express-session')
 querystring = require('querystring')
-
+client = require('./public/js/db')
 cfg = require('./config.js')
 
 
@@ -32,4 +32,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRoutes)
 app.use('/user', userRoutes)
 
-app.listen(3000)
+client.connect(cfg.db_connect, function(err){
+  if(err){
+    console.log('Error in connecting to Mongo. Please check your database connections')
+    process.exit(1)
+  } else {
+    app.listen(3000)
+  }
+})
