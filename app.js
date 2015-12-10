@@ -7,7 +7,7 @@ indexRoutes	= require('./routes/index.js')
 userRoutes	= require('./routes/user.js')
 session = require('express-session')
 querystring = require('querystring')
-client = require('./public/js/db')
+client = require('./public/js/db.js')
 cfg = require('./config.js')
 
 
@@ -19,7 +19,7 @@ app.use(bodyParser());
 
 app.use(session({
   cookieName: 'session',
-  secret: 'jijf849hfinvufenv7834bbs283s',
+  secret: cfg.secret,
   resave: false,
   saveUninitialized: true,
   cookie: {

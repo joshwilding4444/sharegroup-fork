@@ -1,4 +1,5 @@
 var router = express.Router();
+var Users = require('../models/users')
 
 router.get('/dashboard', function(req, res){
   if (cfg.access_token === ''){
@@ -22,10 +23,26 @@ router.get('/dashboard', function(req, res){
       request.get(userInfo, function(error, response, body){
         try {
           var user = JSON.parse(body).data
+          //console.log(user)
+          var inputUser = {
+            'username' : user.username,
+            'full_name' : user.full_name,
+            'profile_pic' : user.profile_picture,
+            'bio' : user.bio,
+            'website_url' : user.website
+          }
+          console.log('User object created locally:')
+          console.log(inputUser)
+          Users.find(inputUser, function(document){
+              if(!document) {
+                Users.insert(inputUser, function(document){
+                  console.log(document)
+                })
+              }
+          })
         } catch(err) {
           var user = ''
         }
-
         res.render('dashboard', {
            user : user,
            feed: feed.data,
@@ -96,6 +113,7 @@ router.get('/dashboard', function(req, res){
           var user = JSON.parse(body)
           try {
             var feed = searchFeed.data;
+
             res.render('search', {
              feed: searchFeed.data,
              user: user.data,

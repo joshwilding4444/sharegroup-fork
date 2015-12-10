@@ -1,10 +1,10 @@
-var db = require('./public/js/db')
+var db = require('../public/js/db.js')
 var ObjectId = require('mongodb').ObjectId
 var assert = require('assert')
 
 exports.find = function(user, callback){
   var collection = db.get().collection('users')
-  collection.findOne({'username': user.username }, function(err, document){
+  collection.findOne({"username": user.username }, function(err, document){
     assert.equal(err, null)
     console.log('Found 1 user document')
     callback(document)
