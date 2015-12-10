@@ -35,9 +35,7 @@ router.get('/dashboard', function(req, res){
           console.log(inputUser)
           Users.find(inputUser, function(document){
               if(!document) {
-                Users.insert(inputUser, function(document){
-                  console.log(document)
-                })
+                Users.insert(inputUser)
               }
           })
         } catch(err) {
@@ -52,8 +50,6 @@ router.get('/dashboard', function(req, res){
          })
         })
       })
-      //console.log(body)
-
     }
   }
 })
@@ -71,9 +67,11 @@ router.get('/dashboard', function(req, res){
       }
       request.get(options, function(error, response, body){
         var userInfo = JSON.parse(body)
-        res.render('profile', {
-          user : userInfo.data,
-          layout : 'auth_base'
+        Users.find(userInfo.data, function(document){
+          res.render('profile', {
+            user : document,
+            layout : 'auth_base'
+          })
         })
       })
     }
