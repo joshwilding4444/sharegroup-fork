@@ -37,7 +37,7 @@ exports.addTag = function(user, tag, callback){
 exports.removeTag = function(user, tag, callback){
   var collection = db.get().collection('users')
   collection.update({"username" : user.username},
-    {$pull : {tags : $in [tag] } },
+    {$pull : {tags : tag } },
     function(err, result){
       assert.equal(err, null)
       assert.equal(1, result.result.n)

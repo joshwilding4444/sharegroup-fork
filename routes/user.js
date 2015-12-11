@@ -137,24 +137,15 @@ router.get('/dashboard', function(req, res){
       //console.log(userInfo)
       Users.find(userInfo.data, function(document){
         console.log(req.query)
-        if(!req.query.hidden === null) {
-          Users.addTag(userInfo.data, req.query.hidden, function(){
-            res.render('savedsearch', {
+          Users.addTag(userInfo.data, req.query.hidden, res.render('savedsearch', {
               layout : 'auth_base',
               tags : document.tags,
               title: 'Saved Searches'
-            })
+            }))
           })
-      } else {
-        res.render('savedsearch', {
-          layout : 'auth_base',
-          tags : document.tags,
-          title: 'Saved Searches'
         })
-      }
       })
-    })
-  })
+
   router.get('/savedsearchdelete', function(req, res){
     var options = {
       url : 'https://api.instagram.com/v1/users/self/?access_token=' + cfg.access_token
@@ -164,14 +155,12 @@ router.get('/dashboard', function(req, res){
       //console.log(userInfo)
       Users.find(userInfo.data, function(document){
         console.log(req.query)
-        Users.removeTag(userInfo.data, req.query.hidden, function(){
-          res.render('savedsearch', {
+        Users.removeTag(userInfo.data, req.query.hidden, res.render('savedsearchdelete', {
             layout : 'auth_base',
             tags : document.tags,
             title: 'Saved Searches'
-          })
+          }))
         })
       })
     })
-  })
 module.exports = router
