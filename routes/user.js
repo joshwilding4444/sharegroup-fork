@@ -127,15 +127,15 @@ router.get('/dashboard', function(req, res){
       })
     })
   }
-})
-/*
-request.post('/search', function(req, res){
-  var userId = req.session.userId
-  Users.find(req.session.userId, function(){
-    Users.addTag(userId, searchInput, function(req, res){
-      res.redirect('search')
+  request.post('/savedsearch', function(req, res){
+    var userId = req.session.userId
+    Users.find(req.session.userId, function(){
+      Users.addTag(userId, searchInput, function(req, res){
+        res.render('savedsearch')
+      })
     })
   })
 })
-*/
+
+
 module.exports = router
