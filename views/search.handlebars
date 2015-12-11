@@ -1,7 +1,14 @@
 <div class="content">
-  <h3>Add <button type="Submit"><form action="search" method="post">
-
-  </form>#{{search_input}}</button> to saved searches?</h3>
+  <form action="/user/savedsearch" method="get">
+    <h3>
+      Add
+      <button type="Submit">
+      #{{search_input}}
+    </button type="Submit">
+    <input type="hidden" name="hidden" value="{{search_input}}">
+    to saved searches?
+    </h3>
+  </form>
 </div>
 <div class="imagecontent">
   {{>feed}}

@@ -1,8 +1,10 @@
 <div class="content">
-  {{#each savedsearches}}
+  {{#each tags}}
     <div>
+      <form action="/user/savedsearch" method="get">
       #{{this}}
-      <button type="" name="button">Delete</button>
+      <input type="hidden" name="hidden" value="{{this}}"><button type="Submit" name="Delete">Delete</button>
+    </form>
     </div>
   {{/each}}
 </div>
