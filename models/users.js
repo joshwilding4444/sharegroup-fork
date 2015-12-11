@@ -45,3 +45,14 @@ exports.removeTag = function(user, tag, callback){
       callback()
   })
 }
+
+exports.update = function(user, callback) {
+  var collection = db.get().collection('users')
+  user._id = ObjectId(user._id)
+  collection.update({'_id': user._id}, user, function(err, result) {
+    assert.equal(err, null)
+    assert.equal(1, result.result.n)
+    console.log('Updated 1 document in the users collection')
+    callback()
+  })
+}

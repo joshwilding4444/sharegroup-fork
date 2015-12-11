@@ -1,0 +1,22 @@
+<div class="jw-profile-large">
+  <img src="{{user.profile_picture}}" style=  "display: block;  margin-left:auto; margin-right: auto" />
+      <div class="profile-info" >
+        <form class="user-form" action="" method="post">
+          <input type="hidden" name="_id" value="{{user._id}}">
+          <p>
+            <input type="text" name="username" value="{{user.username}}" placeholder="Username">
+          </p>
+          <p>
+            <input type="text" name="full_name" value="{{user.full_name}}" placeholder="Full Name">
+          </p>
+          <p>
+            <input type="text" name="bio" value="{{user.bio}}" placeholder="Bio">
+          </p>
+          <p>
+            <input type="text" name="website" value="{{user.website}}" placeholder="Website">
+          </p>
+          <p>
+            <button type="submit">Submit</button>
+          </p>
+    </div>
+</div>

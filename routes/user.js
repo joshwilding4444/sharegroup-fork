@@ -76,6 +76,42 @@ router.get('/dashboard', function(req, res){
     }
   })
 
+  router.get('/updateprofile', function(req, res){
+    if (cfg.access_token === ''){
+      res.redirect('/')
+    } else if(Date.parse(req.session.cookie.expires) < Date.now()){
+      access_token = ''
+      res.redirect('/')
+    } else {
+
+      var options = {
+        url : 'https://api.instagram.com/v1/users/self/?access_token=' + cfg.access_token
+      }
+      request.get(options, function(error, response, body){
+        var userInfo = JSON.parse(body)
+        Users.find(userInfo.data, function(document){
+          res.render('updateprofile', {
+            user : document,
+            layout : 'auth_base'
+          })
+        })
+      })
+    }
+  })
+
+  router.post('/updateprofile', function(req, res) {
+    console.log(req.body)
+  var user = req.body
+
+  Users.update(user, function() {
+    res.render('profile', {
+      user: user,
+      layout: 'auth_base',
+      success: 'Successfully updated the user!'
+    })
+  })
+})
+
   router.get('/search', function(req, res){
     if (cfg.access_token === ''){
       res.redirect('/')
