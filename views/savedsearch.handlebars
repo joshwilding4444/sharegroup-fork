@@ -1,7 +1,7 @@
 <div class="content">
   {{#each tags}}
     <div>
-      <form action="/user/savedsearchdelete" method="get">
+      <form action="/user/deletetag" method="get">
       #{{this}}
       <input type="hidden" name="hidden" value="{{this}}"><button type="Submit" name="Delete">Delete</button>
     </form>

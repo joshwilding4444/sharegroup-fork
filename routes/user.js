@@ -82,11 +82,11 @@ router.get('/dashboard', function(req, res){
     }
 
     else{
-      console.log(req.query)            //log the query string to the console
+      //console.log(req.query)            //log the query string to the console
       //Put the entire search URL together.
       try {
         searchInput = req.query.search //construct part of the query string, using the user input
-        console.log('Search data is ' + searchInput)
+        //console.log('Search data is ' + searchInput)
         var searchURL = 'https://api.instagram.com/v1/tags/' + searchInput + '/media/recent?access_token=' + cfg.access_token
       } catch(err) {
         var searchURL = 'https://api.instagram.com/v1/tags/instagram' + cfg.access_token
@@ -104,7 +104,7 @@ router.get('/dashboard', function(req, res){
         try {
           var searchFeed = JSON.parse(body)     //This object contains the Intagram search results
         } catch(err) {
-          console.log(searchOptions)
+          //console.log(searchOptions)
         }
         request.get(userInfo, function(error, response, body){
           var user = JSON.parse(body)
@@ -128,39 +128,46 @@ router.get('/dashboard', function(req, res){
     })
   }
 })
-  router.get('/savedsearch', function(req, res){
+  router.get('/addtag', function(req, res){
     var options = {
       url : 'https://api.instagram.com/v1/users/self/?access_token=' + cfg.access_token
     }
     request.get(options, function(error, response, body){
       var userInfo = JSON.parse(body)
       //console.log(userInfo)
-      Users.find(userInfo.data, function(document){
-        console.log(req.query)
-          Users.addTag(userInfo.data, req.query.hidden, res.render('savedsearch', {
-              layout : 'auth_base',
-              tags : document.tags,
-              title: 'Saved Searches'
-            }))
-          })
-        })
-      })
-
-  router.get('/savedsearchdelete', function(req, res){
-    var options = {
-      url : 'https://api.instagram.com/v1/users/self/?access_token=' + cfg.access_token
-    }
-    request.get(options, function(error, response, body){
-      var userInfo = JSON.parse(body)
-      //console.log(userInfo)
-      Users.find(userInfo.data, function(document){
-        console.log(req.query)
-        Users.removeTag(userInfo.data, req.query.hidden, res.render('savedsearchdelete', {
-            layout : 'auth_base',
-            tags : document.tags,
-            title: 'Saved Searches'
-          }))
+          Users.addTag(userInfo.data, req.query.hidden, function(){
+            res.redirect('/user/savedsearch')
         })
       })
     })
+
+    router.get('/savedsearch', function(req, res){
+      var options = {
+        url : 'https://api.instagram.com/v1/users/self/?access_token=' + cfg.access_token
+      }
+      request.get(options, function(error, response, body){
+        var userInfo = JSON.parse(body)
+        //console.log(userInfo)
+          Users.find(userInfo.data, function(document) {
+            res.render('savedsearch', {
+              layout : 'auth_base',
+              tags : document.tags,
+              title: 'Saved Searches'
+            })
+        })
+      })
+    })
+
+  router.get('/deletetag', function(req, res){
+    var options = {
+      url : 'https://api.instagram.com/v1/users/self/?access_token=' + cfg.access_token
+    }
+    request.get(options, function(error, response, body){
+      var userInfo = JSON.parse(body)
+      //console.log(userInfo)
+        Users.removeTag(userInfo.data, req.query.hidden, function() {
+          res.redirect('/user/savedsearch')
+      })
+    })
+  })
 module.exports = router
