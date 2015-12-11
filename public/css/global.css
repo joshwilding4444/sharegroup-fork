@@ -117,6 +117,14 @@ img.jw-search {
   height:25px;
   width:25px;
 }
+
+h3.button{
+  display : inline;
+  margin-left: 5%;
+  padding:0;
+  width: 50%;
+  border-radius: 16px 16px 16px 16px;
+}
 /*
   !SAVED SEARCH CONTAINER
 */
@@ -171,9 +179,9 @@ body {
 .jw-profile-large {
   float: left;
   margin-top: 15%;
-  margin-left: 35%;
-  height: 310px;
-  width: 310px;
+  margin-left: 30%;
+  height: 50%;
+  width: 30%;
   padding: 15px;
   background-color: grey;
   border: black solid 2px;

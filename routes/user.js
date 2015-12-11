@@ -27,12 +27,11 @@ router.get('/dashboard', function(req, res){
           var inputUser = {
             'username' : user.username,
             'full_name' : user.full_name,
-            'profile_pic' : user.profile_picture,
+            'profile_picture' : user.profile_picture,
             'bio' : user.bio,
-            'website_url' : user.website
+            'website' : user.website
           }
           console.log('User object created locally:')
-          console.log(inputUser)
           Users.find(inputUser, function(document){
               if(!document) {
                 Users.insert(inputUser)
@@ -113,18 +112,30 @@ router.get('/dashboard', function(req, res){
             var feed = searchFeed.data;
 
             res.render('search', {
+             search_input : searchInput,
              feed: searchFeed.data,
              user: user.data,
              layout: 'auth_base',
              title: 'Search Page!',
-             pageintro: 'Search Instagram for #' + searchInput  //Shows the user the current search query
+             //Shows the user the current search query
+             pageintro: 'Search Instagram for #' + searchInput + ' Add to saved searches?'
            })
+
           } catch (err) {
             res.redirect('/user/dashboard')
           }
       })
     })
-    }
+  }
+})
+/*
+request.post('/search', function(req, res){
+  var userId = req.session.userId
+  Users.find(req.session.userId, function(){
+    Users.addTag(userId, searchInput, function(req, res){
+      res.redirect('search')
+    })
   })
-
+})
+*/
 module.exports = router

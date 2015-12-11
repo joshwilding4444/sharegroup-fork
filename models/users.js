@@ -21,3 +21,27 @@ exports.insert = function(user, callback){
     callback(result)
   })
 }
+
+exports.addTag = function(userId, tag, callback){
+  var collection = db.get().collection('users')
+  collection.update({"id" : ObjectId(userId)}, user,
+    {$push : {tags : tag}},
+    function(err, result){
+      assert.equal(err, null)
+      assert.equal(1, result.result.n)
+      console.log('Updated one tag in the users collection')
+      callback()
+  })
+}
+
+exports.removeTag = function(userId, tag, callback){
+  var collection = db.get().collection('users')
+  collection.update({"id" : ObjectId(userId)}, user,
+    {$pull : {tags : tag}},
+    function(err, result){
+      assert.equal(err, null)
+      assert.equal(1, result.result.n)
+      console.log('Removed one tag in the users collection')
+      callback()
+  })
+}
