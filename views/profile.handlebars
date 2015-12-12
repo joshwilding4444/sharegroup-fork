@@ -13,15 +13,15 @@
       <p>
         Website : <a href="{{user.website}}">{{user.website}}</a>
       </p>
-    </div>
-</div>
-<div class="updateProfile">
-  <p>
-    <a href="/user/updateprofile"><button type="button" class='updatebutton'>Click here to update your profile!</button></a>
-  </p>
-    {{#if success}}
+  <div class="updateProfile">
     <p>
-      {{success}}
+      <a href="/user/updateprofile"><button type="button" class='updatebutton'>Click here to update your profile!</button></a>
     </p>
-    {{/if}}
+      {{#if success}}
+      <p>
+        {{success}}
+      </p>
+      {{/if}}
+  </div>
+</div>
 </div>

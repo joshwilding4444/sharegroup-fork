@@ -118,42 +118,43 @@ img.jw-search {
   width:25px;
 }
 
-h3.button{
+/*
+  !SAVED SEARCH CONTAINER
+*/
+li.jw-saved-search-container {
+  position:relative;
+  float:left;
+  margin-left: 0;
+  margin-top: 0;
+  width: 25%;
+  background-color: #85C2A5;
+  border-color: grey;
+  padding-top:0;
+  padding-bottom:0;
+  padding-right: 20px;
+  padding-left: 0.5%;
+  color: #FFFFFF;
+  font-size: 22px;
+  font-style: italic;
+  border-width:10px;
+  border-style:solid;
+  display:inline-block;
+}
+ul.jw-saved-search-container{
+  list-style-type: none;
+}
+button.jw-saved-search-container{
   display : inline;
   margin-left: 5%;
   padding:0;
   width: 50%;
   border-radius: 16px 16px 16px 16px;
 }
-/*
-  !SAVED SEARCH CONTAINER
-*/
-div.jw-saved-search-container {
-  position:fixed;
-  float:left;
-  padding:0;
-  margin-left: 16.6%;
-  margin-top: 2.4%;
-  width: 50%;
-  background-color: #85C2A5;
-}
-ul.jw-saved-search-container {
-  margin:0;
-  padding:0;
-  list-style-type: none;
-  font-size: 17px;
-  font-style: italic;
-  color: #FFFFFF;
-}
-li.jw-saved-search-container {
-  margin: 0;
-  border-width:5px;
-  padding-top:1%;
-  padding-bottom:1%;
-  padding-right: 20px;
-  padding-left: 1%;
-  border-style:solid;
-  border-color: grey;
+
+form.jw-saved-search-container {
+  margin-bottom: 0;
+  padding: 0;
+  border: 0;
 }
 a.jw-saved-search-container {
   text-decoration: none;
@@ -191,7 +192,7 @@ body {
 .updateProfile {
   float: left;
   margin-top: 5%;
-  margin-left: 10%;
+  margin-left: 25%;
   height: 20%;
   width: 30%;
   padding: 15px;

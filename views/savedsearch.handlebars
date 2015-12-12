@@ -1,10 +1,12 @@
 <div class="content">
+  <ul class="jw-saved-search-container">
   {{#each tags}}
-    <div>
+    <li class="jw-saved-search-container">
       <form action="/user/deletetag" method="get">
       #{{this}}
       <input type="hidden" name="hidden" value="{{this}}"><button type="Submit" name="Delete">Delete</button>
     </form>
-    </div>
+  </li>
   {{/each}}
+</ul>
 </div>
